@@ -1,10 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { PixelatedCanvas } from "./ui/pixelated-canvas";
 
 export default function About() {
-	const itemVariants = {
+	const itemVariants: Variants = {
 		hidden: { opacity: 0, y: 20 },
 		visible: {
 			opacity: 1,

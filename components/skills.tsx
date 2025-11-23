@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { motion } from "motion/react";
+import { motion, Variants } from "motion/react";
 import { GlowingEffect } from "./ui/glowing-effect";
 
 const Skills = () => {
@@ -50,7 +50,7 @@ const Skills = () => {
 		],
 	};
 
-	const itemVariants = {
+	const itemVariants: Variants = {
 		hidden: { opacity: 0, y: 20 },
 		visible: {
 			opacity: 1,
