@@ -2,6 +2,7 @@
 
 import { motion, Variants } from "framer-motion";
 import { PixelatedCanvas } from "./ui/pixelated-canvas";
+import Image from "next/image";
 
 export default function About() {
 	const itemVariants: Variants = {
@@ -56,19 +57,19 @@ export default function About() {
 
 					<div className="space-y-3 pt-4">
 						<div className="flex items-center gap-3">
-							<span className="text-secondary text-lg mt-1">→</span>
+							<span className="text-foreground text-lg mt-1">→</span>
 							<p className="text-foreground">
 								Performance-oriented and detail-focused
 							</p>
 						</div>
 						<div className="flex items-center gap-3">
-							<span className="text-secondary text-lg mt-1">→</span>
+							<span className="text-foreground text-lg mt-1">→</span>
 							<p className="text-foreground">
 								Full-stack capabilities with modern tech
 							</p>
 						</div>
 						<div className="flex items-center gap-3">
-							<span className="text-secondary text-lg mt-1">→</span>
+							<span className="text-foreground text-lg mt-1">→</span>
 							<p className="text-foreground">
 								Calm, reliable, and thoughtful engineering
 							</p>
@@ -81,13 +82,12 @@ export default function About() {
 					whileHover={{ scale: 1.05 }}
 					transition={{ duration: 0.3 }}
 				>
-					<div className="w-72 h-72 rounded-2xl border border-border flex items-center justify-center">
-						<PixelatedCanvas
-							src="himanshu-portrait.jpeg"
-							width={288}
-							height={288}
-							cellSize={1}
-							className="rounded-2xl"
+					<div className="w-72 h-72 rounded-2xl border border-border flex items-center justify-center relative overflow-hidden">
+						<Image
+							src="/himanshu-portrait.jpeg"
+							alt="Himanshu Portrait"
+							fill
+							className="object-cover"
 						/>
 					</div>
 				</motion.div>

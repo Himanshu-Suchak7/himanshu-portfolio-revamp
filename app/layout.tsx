@@ -1,8 +1,14 @@
 import type { Metadata } from "next";
-import { Great_Vibes, Lato, Poppins, Roboto, JetBrains_Mono } from "next/font/google";
+import {
+	Great_Vibes,
+	Lato,
+	Poppins,
+	Roboto,
+	JetBrains_Mono,
+} from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar";
-import { ThemeProvider } from "next-themes";
+import { ThemeProvider } from "@/components/theme-provider";
 import Footer from "@/components/footer";
 
 const greatVibes = Great_Vibes({
@@ -51,7 +57,9 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en" suppressHydrationWarning>
-			<body className={`${greatVibes.variable} ${lato.variable} ${poppins.variable} ${roboto.variable} ${jetbrainsMono.variable} antialiased`}>
+			<body
+				className={`${greatVibes.variable} ${lato.variable} ${poppins.variable} ${roboto.variable} ${jetbrainsMono.variable} antialiased`}
+			>
 				<ThemeProvider
 					attribute="class"
 					defaultTheme="system"

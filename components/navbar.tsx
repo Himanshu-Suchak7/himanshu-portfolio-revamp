@@ -12,6 +12,7 @@ import {
 	NavbarButton,
 } from "@/components/ui/resizable-navbar";
 import { useState } from "react";
+import { ThemeToggle } from "./ui/theme-toggle";
 
 const navItems = [
 	{ name: "About", link: "#about" },
@@ -32,7 +33,8 @@ export default function Navbar() {
 					items={navItems}
 					onItemClick={() => setMobileMenuOpen(false)}
 				/>
-				<div className="ml-auto flex items-center gap-2">
+				<div className="ml-auto flex items-center gap-2 relative z-50">
+					<ThemeToggle />
 					<NavbarButton href="#contact">Download CV</NavbarButton>
 				</div>
 			</NavBody>
@@ -74,6 +76,7 @@ export default function Navbar() {
 							{item.name}
 						</a>
 					))}
+					<ThemeToggle />
 					<NavbarButton href="#contact" className="mt-4">
 						Download CV
 					</NavbarButton>
