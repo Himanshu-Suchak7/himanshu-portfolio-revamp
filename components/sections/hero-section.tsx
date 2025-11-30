@@ -7,8 +7,10 @@ import { Cover } from "../ui/cover";
 import { LayoutTextFlip } from "../ui/layout-text-flip";
 
 export default function HeroSection() {
+	const isTouch =
+		typeof window !== "undefined" && matchMedia("(pointer: coarse)").matches;
 	return (
-		<BackgroundBeamsWithCollision className="min-h-[100dvh] flex items-center">
+		<BackgroundBeamsWithCollision className="min-h-dvh flex items-center">
 			<div className="relative z-10 flex flex-col items-center justify-center w-full max-w-4xl mx-auto px-4 sm:px-6 pt-16 pb-10 sm:pt-20 sm:pb-16 text-center">
 				{/* Heading */}
 				<motion.div
@@ -18,7 +20,8 @@ export default function HeroSection() {
 					className="mb-3 sm:mb-4"
 				>
 					<h1 className="text-3xl sm:text-4xl lg:text-6xl font-semibold text-black dark:text-white leading-tight">
-						Hello there, I&apos;m <Cover>Himanshu</Cover>
+						Hello there, I&apos;m{" "}
+						{isTouch ? "Himanshu" : <Cover>Himanshu</Cover>}
 					</h1>
 				</motion.div>
 
@@ -27,11 +30,11 @@ export default function HeroSection() {
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.6, delay: 0.2 }}
-					className="mb-6"
+					className="mb-6 mt-6"
 				>
 					<h2 className="font-poppins text-2xl md:text-4xl lg:text-5xl font-semibold text-neutral-800 dark:text-neutral-200 mb-4">
 						<div className="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2">
-							<span className="text-xl sm:text-2xl">I am a</span>
+							<span className="text-2xl sm:text-4xl">I am a</span>
 
 							{/* The pill with rotating titles */}
 							<LayoutTextFlip
