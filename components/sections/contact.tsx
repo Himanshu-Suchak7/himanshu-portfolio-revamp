@@ -1,13 +1,13 @@
 "use client";
 
 import React from "react";
-import ContactForm from "./contact-form";
+import ContactForm from "../contact-form";
 import { BackgroundBeams } from "@/components/ui/background-beams";
 
-const Contact = () => {
+	const Contact = () => {
 	return (
 		<section
-			className="relative min-h-screen flex flex-col justify-center px-4 py-16 md:py-32 overflow-hidden"
+			className="relative min-h-screen flex flex-col justify-center px-4 py-16 md:py-32 overflow-hidden w-full"
 			id="contact"
 		>
 			<BackgroundBeams className="absolute inset-0" />

@@ -83,16 +83,16 @@ export const HoverEffect = ({
 
 								{item.tech && item.tech.length > 0 && (
 									<div className="mt-6 flex flex-wrap gap-2">
-										{item.tech.slice(0, 4).map((t, idx) => (
+										{item.tech.slice(0, 4).map((tech, idx) => (
 											<span
 												key={idx}
-												className="px-2 py-1 text-xs rounded-full bg-neutral-500/20 text-neutral-400 border border-neutral-500/30"
+												className="px-2 py-1 text-xs rounded-full bg-neutral-400/10 dark:bg-neutral-500/20 text-neutral-700 dark:text-neutral-300 border border-neutral-300 dark:border-neutral-500/30"
 											>
-												{t}
+												{tech}
 											</span>
 										))}
 										{item.tech.length > 4 && (
-											<span className="px-2 py-1 text-xs rounded-full bg-neutral-500/20 text-neutral-400 border border-neutral-500/30">
+											<span className="px-2 py-1 text-xs rounded-full bg-neutral-400/10 dark:bg-neutral-500/20 text-neutral-700 dark:text-neutral-300 border border-neutral-300 dark:border-neutral-500/30">
 												+{item.tech.length - 4} more
 											</span>
 										)}
@@ -104,7 +104,7 @@ export const HoverEffect = ({
 										e.stopPropagation();
 										setSelectedProject(item);
 									}}
-									className="mt-6 text-zinc-300 hover:text-zinc-400 flex items-center gap-2 text-sm font-medium cursor-pointer transition-smooth"
+									className="mt-6 text-zinc-800 hover:text-zinc-700 dark:text-zinc-300 dark:hover:text-zinc-400 flex items-center gap-2 text-sm font-medium cursor-pointer transition-smooth"
 								>
 									View Project <ExternalLink size={14} />
 								</button>
@@ -123,7 +123,7 @@ export const HoverEffect = ({
 						<>
 							<DialogHeader>
 								<div className="space-y-2">
-									<div className="text-zinc-400 text-sm font-medium uppercase tracking-wide">
+									<div className="text-zinc-600 dark:text-zinc-400 text-sm font-medium uppercase tracking-wide">
 										{selectedProject.subtitle}
 									</div>
 									<DialogTitle className="text-2xl">
@@ -145,7 +145,7 @@ export const HoverEffect = ({
 
 							{/* Full Description */}
 							<div className="space-y-2">
-								<DialogDescription className="text-base text-zinc-300">
+								<DialogDescription className="text-base text-zinc-700 dark:text-zinc-300">
 									{selectedProject.fullDescription ||
 										selectedProject.description}
 								</DialogDescription>
@@ -156,16 +156,16 @@ export const HoverEffect = ({
 								{selectedProject.whatISolved &&
 									selectedProject.whatISolved.length > 0 && (
 										<div className="space-y-3">
-											<h3 className="font-semibold text-white">
+											<h3 className="font-semibold text-black dark:text-white">
 												What I Solved
 											</h3>
 											<ul className="space-y-2">
 												{selectedProject.whatISolved.map((item, idx) => (
 													<li
 														key={idx}
-														className="flex gap-3 text-sm text-zinc-400"
+														className="flex gap-3 text-sm text-zinc-600 dark:text-zinc-400"
 													>
-														<span className="text-zinc-100 flex-shrink-0">
+														<span className="text-zinc-900 dark:text-zinc-100 shrink-0">
 															✓
 														</span>
 														<span>{item}</span>
@@ -178,16 +178,16 @@ export const HoverEffect = ({
 								{selectedProject.whatILearned &&
 									selectedProject.whatILearned.length > 0 && (
 										<div className="space-y-3">
-											<h3 className="font-semibold text-white">
+											<h3 className="font-semibold text-black dark:text-white">
 												What I Learned
 											</h3>
 											<ul className="space-y-2">
 												{selectedProject.whatILearned.map((item, idx) => (
 													<li
 														key={idx}
-														className="flex gap-3 text-sm text-zinc-400"
+														className="flex gap-3 text-sm text-zinc-600 dark:text-zinc-400"
 													>
-														<span className="text-zinc-100 flex-shrink-0">
+														<span className="text-zinc-900 dark:text-zinc-100 shrink-0">
 															✓
 														</span>
 														<span>{item}</span>
@@ -203,12 +203,12 @@ export const HoverEffect = ({
 								<div className="space-y-3">
 									<h3 className="font-semibold text-white">Tech Stack</h3>
 									<div className="flex flex-wrap gap-2">
-										{selectedProject.tech.map((t, idx) => (
+										{selectedProject.tech.map((tech, idx) => (
 											<span
 												key={idx}
-												className="px-3 py-1.5 text-xs rounded-full bg-neutral-500/20 text-neutral-300 border border-neutral-500/30"
+												className="px-3 py-1.5 text-xs rounded-full bg-neutral-400/10 dark:bg-neutral-500/20 text-neutral-700 dark:text-neutral-300 border border-neutral-300 dark:border-neutral-500/30"
 											>
-												{t}
+												{tech}
 											</span>
 										))}
 									</div>
@@ -269,7 +269,7 @@ export const Card = ({
 	return (
 		<div
 			className={cn(
-				"rounded-2xl h-full w-full overflow-hidden bg-black border border-transparent dark:border-white/20 group-hover:border-slate-700 relative z-20 cursor-pointer",
+				"rounded-2xl h-full w-full overflow-hidden bg-neutral-100 dark:bg-black border border-neutral-300 dark:border-white/20 dark:group-hover:border-slate-700 relative z-20 cursor-pointer",
 				className
 			)}
 		>
@@ -298,7 +298,12 @@ export const CardTitle = ({
 	children: React.ReactNode;
 }) => {
 	return (
-		<h4 className={cn("text-zinc-100 font-bold tracking-wide mt-4", className)}>
+		<h4
+			className={cn(
+				"text-zinc-900 dark:text-zinc-100 font-bold tracking-wide mt-4",
+				className
+			)}
+		>
 			{children}
 		</h4>
 	);
@@ -312,7 +317,12 @@ export const CardSubtitle = ({
 	children: React.ReactNode;
 }) => {
 	return (
-		<p className={cn("text-zinc-300 text-sm tracking-wide mt-1", className)}>
+		<p
+			className={cn(
+				"text-zinc-700 dark:text-zinc-300 text-sm tracking-wide mt-1",
+				className
+			)}
+		>
 			{children}
 		</p>
 	);
@@ -328,7 +338,7 @@ export const CardDescription = ({
 	return (
 		<p
 			className={cn(
-				"mt-8 text-zinc-400 tracking-wide leading-relaxed text-sm",
+				"mt-8 text-zinc-600 dark:text-zinc-400 tracking-wide leading-relaxed text-sm",
 				className
 			)}
 		>

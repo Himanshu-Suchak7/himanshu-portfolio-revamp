@@ -16,9 +16,9 @@ export default function ContactForm() {
 		console.log("Form submitted");
 	};
 	return (
-		<div className="shadow-input w-full max-w-[60%] flex flex-col justify-center">
+		<div className="shadow-input w-full max-w-full lg:max-w-[60%] flex flex-col justify-center">
 			<div className="space-y-2">
-				<div className="section-title font-jetbrains-mono text-gray-400">
+				<div className="section-title font-jetbrains-mono text-gray-600 dark:text-gray-400">
 					/* Contact */
 				</div>
 				<h2 className="text-3xl sm:text-4xl font-bold text-foreground">
@@ -33,24 +33,44 @@ export default function ContactForm() {
 				<div className="mb-4">
 					<LabelInputContainer>
 						<Label htmlFor="firstname">Name</Label>
-						<Input id="firstname" placeholder="Your Name" type="text" />
+						<Input
+							id="firstname"
+							placeholder="Your Name"
+							type="text"
+							className="bg-zinc-100 placeholder:text-neutral-500"
+						/>
 					</LabelInputContainer>
 				</div>
 				<LabelInputContainer className="mb-4">
 					<Label htmlFor="email">Email Address</Label>
-					<Input id="email" placeholder="yourexample@gmail.com" type="email" />
+					<Input
+						id="email"
+						placeholder="yourexample@gmail.com"
+						type="email"
+						className="bg-zinc-100 placeholder:text-neutral-500"
+					/>
 				</LabelInputContainer>
 				<LabelInputContainer className="mb-4">
 					<Label htmlFor="phone">Phone Number</Label>
-					<Input id="phone" placeholder="+91 9876543210" type="tel" />
+					<Input
+						id="phone"
+						placeholder="+91 9876543210"
+						type="tel"
+						className="bg-zinc-100 placeholder:text-neutral-500"
+					/>
 				</LabelInputContainer>
 				<LabelInputContainer className="mb-4">
 					<Label htmlFor="message">Message</Label>
-					<Textarea id="message" placeholder="Your Message" rows={3} />
+					<Textarea
+						id="message"
+						placeholder="Your Message"
+						rows={3}
+						className="bg-zinc-100 placeholder:text-neutral-500"
+					/>
 				</LabelInputContainer>
 
 				<button
-					className="group/btn relative block h-10 w-full rounded-md bg-gradient-to-br from-black to-neutral-600 font-medium text-white shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:bg-zinc-800 dark:from-zinc-900 dark:to-zinc-900 dark:shadow-[0px_1px_0px_0px_#27272a_inset,0px_-1px_0px_0px_#27272a_inset]"
+					className="group/btn relative block h-10 w-full rounded-md bg-linear-to-br from-black to-neutral-600 font-medium text-white shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:bg-zinc-800 dark:from-zinc-900 dark:to-zinc-900 dark:shadow-[0px_1px_0px_0px_#27272a_inset,0px_-1px_0px_0px_#27272a_inset] cursor-pointer"
 					type="submit"
 				>
 					Send Message

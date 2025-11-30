@@ -1,7 +1,6 @@
 "use client";
 
 import { motion, Variants } from "framer-motion";
-import { PixelatedCanvas } from "./ui/pixelated-canvas";
 import Image from "next/image";
 
 export default function About() {
@@ -17,14 +16,14 @@ export default function About() {
 	return (
 		<motion.section
 			id="about"
-			className="space-y-8 max-w-7xl mx-auto min-h-screen flex flex-col justify-center px-4 py-16 md:py-32"
+			className="space-y-8 max-w-7xl mx-auto min-h-screen flex flex-col justify-center px-4 py-16 md:py-32 w-full"
 			initial="hidden"
 			whileInView="visible"
 			viewport={{ once: true, margin: "-100px" }}
 			variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
 		>
 			<motion.div className="space-y-2" variants={itemVariants}>
-				<div className="section-title font-jetbrains-mono text-gray-400">
+				<div className="section-title font-jetbrains-mono text-gray-600 dark:text-gray-400">
 					/* About Me */
 				</div>
 				<h2 className="text-3xl sm:text-4xl font-bold text-foreground">
@@ -82,7 +81,7 @@ export default function About() {
 					whileHover={{ scale: 1.05 }}
 					transition={{ duration: 0.3 }}
 				>
-					<div className="w-72 h-72 rounded-2xl border border-border flex items-center justify-center relative overflow-hidden">
+					<div className="w-80 h-80 rounded-2xl border border-border flex items-center justify-center relative overflow-hidden">
 						<Image
 							src="/himanshu-portrait.jpeg"
 							alt="Himanshu Portrait"

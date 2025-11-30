@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/resizable-navbar";
 import { useState } from "react";
 import { ThemeToggle } from "./ui/theme-toggle";
+import { Linkedin } from "lucide-react";
 
 const navItems = [
 	{ name: "About", link: "#about" },
@@ -25,6 +26,14 @@ const navItems = [
 export default function Navbar() {
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+	// Get responsive scroll offset based on viewport width
+	const getScrollOffset = () => {
+		if (typeof window === 'undefined') return 20;
+		const width = window.innerWidth;
+		if (width < 1024) return 30; // Mobile/Tablet: 30px offset
+		return 20; // Desktop: 20px offset
+	};
+
 	return (
 		<ResizableNavbar>
 			<NavBody>
@@ -35,7 +44,13 @@ export default function Navbar() {
 				/>
 				<div className="ml-auto flex items-center gap-2 relative z-50">
 					<ThemeToggle />
-					<NavbarButton href="#contact">Download CV</NavbarButton>
+					<NavbarButton
+						href={process.env.NEXT_PUBLIC_LINKEDIN_LINK}
+						className="flex items-center justify-center gap-2"
+					>
+						<Linkedin className="w-4 h-4" />
+						LinkedIn
+					</NavbarButton>
 				</div>
 			</NavBody>
 
@@ -60,7 +75,7 @@ export default function Navbar() {
 								const targetId = item.link.substring(1);
 								const element = document.getElementById(targetId);
 								if (element) {
-									const offset = 1; // Adjust this value based on your navbar height
+									const offset = getScrollOffset(); // Responsive scroll margin offset
 									const elementPosition = element.getBoundingClientRect().top;
 									const offsetPosition =
 										elementPosition + window.pageYOffset - offset;
@@ -77,8 +92,12 @@ export default function Navbar() {
 						</a>
 					))}
 					<ThemeToggle />
-					<NavbarButton href="#contact" className="mt-4">
-						Download CV
+					<NavbarButton
+						href={process.env.NEXT_PUBLIC_LINKEDIN_LINK}
+						className="mt-4 flex items-center justify-center gap-2"
+					>
+						<Linkedin className="w-4 h-4" />
+						LinkedIn
 					</NavbarButton>
 				</MobileNavMenu>
 			</MobileNav>

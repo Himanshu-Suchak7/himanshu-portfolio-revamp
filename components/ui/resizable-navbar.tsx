@@ -57,7 +57,7 @@ export const Navbar = ({ children, className }: NavbarProps) => {
 	const [visible, setVisible] = useState<boolean>(false);
 
 	useMotionValueEvent(scrollY, "change", (latest) => {
-		if (latest > 100) {
+		if (latest > 50) {
 			setVisible(true);
 		} else {
 			setVisible(false);
@@ -68,7 +68,7 @@ export const Navbar = ({ children, className }: NavbarProps) => {
 		<motion.div
 			ref={ref}
 			// IMPORTANT: Change this to class of `fixed` if you want the navbar to be fixed
-			className={cn("sticky inset-x-0 top-20 z-40 w-full", className)}
+			className={cn("sticky inset-x-0 top-5 z-50 w-full", className)}
 		>
 			{React.Children.map(children, (child) =>
 				React.isValidElement(child)
@@ -86,24 +86,24 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
 	return (
 		<motion.div
 			animate={{
-				backdropFilter: visible ? "blur(10px)" : "none",
+				backdropFilter: visible ? "blur(5px)" : "none",
 				boxShadow: visible
 					? "0 0 24px rgba(34, 42, 53, 0.06), 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(34, 42, 53, 0.04), 0 0 4px rgba(34, 42, 53, 0.08), 0 16px 68px rgba(47, 48, 55, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1) inset"
 					: "none",
 				width: visible ? "40%" : "100%",
-				y: visible ? 20 : 0,
+				y: visible ? 10 : 0,
 			}}
 			transition={{
 				type: "spring",
-				stiffness: 200,
+				stiffness: 120,
 				damping: 50,
 			}}
 			style={{
-				minWidth: "800px",
+				minWidth: "900px",
 			}}
 			className={cn(
-				"relative z-[60] mx-auto hidden w-full max-w-7xl flex-row items-center justify-between self-start rounded-full bg-transparent px-4 py-2 lg:flex dark:bg-transparent",
-				visible && "bg-white/80 dark:bg-neutral-950/80",
+				"relative z-60 mx-auto hidden w-full max-w-7xl flex-row items-center justify-between self-start rounded-full bg-transparent px-4 py-2 lg:flex dark:bg-transparent",
+				visible && "bg-white/50 dark:bg-neutral-950/50",
 				className
 			)}
 		>
@@ -114,6 +114,14 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
 
 export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
 	const [hovered, setHovered] = useState<number | null>(null);
+
+	// Get responsive scroll offset based on viewport width
+	const getScrollOffset = () => {
+		if (typeof window === 'undefined') return 20;
+		const width = window.innerWidth;
+		if (width < 1024) return 30; // Mobile/Tablet: 30px offset
+		return 20; // Desktop: 20px offset
+	};
 
 	return (
 		<motion.div
@@ -131,9 +139,10 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
 						const targetId = item.link.substring(1);
 						const element = document.getElementById(targetId);
 						if (element) {
-							const offset = 1; // Adjust this value based on your navbar height
+							const offset = getScrollOffset(); // Responsive scroll margin offset
 							const elementPosition = element.getBoundingClientRect().top;
-							const offsetPosition = elementPosition + window.pageYOffset - offset;
+							const offsetPosition =
+								elementPosition + window.pageYOffset - offset;
 							window.scrollTo({
 								top: offsetPosition,
 								behavior: "smooth",
@@ -179,7 +188,7 @@ export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
 			}}
 			className={cn(
 				"relative z-50 mx-auto flex w-full max-w-[calc(100vw-2rem)] flex-col items-center justify-between bg-transparent px-0 py-2 lg:hidden",
-				visible && "bg-white/80 dark:bg-neutral-950/80",
+				visible && "bg-white/50 dark:bg-neutral-950/50",
 				className
 			)}
 		>

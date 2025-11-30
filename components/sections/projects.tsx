@@ -1,7 +1,6 @@
 "use client";
 
-import { useState } from "react";
-import { HoverEffect } from "./ui/card-hover-effect";
+import { HoverEffect } from "../ui/card-hover-effect";
 
 const Projects = () => {
 	const projects = [
@@ -54,11 +53,11 @@ const Projects = () => {
 	];
 	return (
 		<section
-			className="space-y-8 max-w-7xl mx-auto min-h-screen flex flex-col justify-center px-4 py-16 md:py-32"
+			className="space-y-8 max-w-7xl mx-auto min-h-screen flex flex-col justify-center px-4 py-16 md:py-32 w-full"
 			id="projects"
 		>
 			<div className="space-y-2">
-				<div className="section-title font-jetbrains-mono text-gray-400">
+				<div className="section-title font-jetbrains-mono text-gray-600 dark:text-gray-400">
 					/* Projects */
 				</div>
 				<h2 className="text-3xl sm:text-4xl font-bold text-foreground">
