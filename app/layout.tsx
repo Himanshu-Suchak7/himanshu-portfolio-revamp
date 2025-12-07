@@ -10,6 +10,7 @@ import "./globals.css";
 import Navbar from "@/components/navbar";
 import { ThemeProvider } from "@/components/theme-provider";
 import Footer from "@/components/footer";
+import { Toaster } from "@/components/ui/sonner";
 
 const greatVibes = Great_Vibes({
 	variable: "--font-great-vibes",
@@ -69,6 +70,7 @@ export default function RootLayout({
 					<Navbar />
 					{children}
 					<Footer />
+					<Toaster position={'top-right'}/>
 				</ThemeProvider>
 			</body>
 		</html>
